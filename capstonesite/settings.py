@@ -39,6 +39,7 @@ STATICFILES_DIRS = [
 # Application definition
 
 INSTALLED_APPS = [
+	'whitenoise.middleware.WhiteNoiseMiddleware',
 	'assistant.apps.AssistantConfig',
 	'home.apps.HomeConfig',
 	'adtaa.apps.AdtaaConfig',
