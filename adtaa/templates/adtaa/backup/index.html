@@ -1,0 +1,29 @@
+
+<h2>Teacher List</h2>
+    {% for teacher in teacher_list %}
+      <tr>
+        <td>{{teacher.last_name}}</td>
+        <td>{{teacher.first_name}}</td>
+        <td>{{teacher.email}}</td>
+        <td>{{teacher.class_load}}</td>
+        <td>{{teacher.get_area_values}}</td>
+        <td><a href="{% url 'update_teacher' teacher.last_name  %}" class="button">Update</a></td>
+        <td><a href="{% url 'delete_teacher' teacher.last_name  %}" class="button">Delete</a></td><br>
+      </tr>
+    {% endfor %}<br>
+    <a href="{% url 'create_teacher' %}" class="button">Create New Teacher</a>
+
+<h2>Course List</h2>
+    {% for course in course_list %}
+      <tr>
+        <td>{{course.course_num}}</td>
+        <td>{{course.title}}</td>
+        <td>{{course.meeting_day}}</td>
+        <td>{{course.meeting_time}}</td>
+        <td>{{course.get_area_values}}</td>
+        <td><a href="{% url 'update_course' course.course_num  %}" class="button">Update</a></td>
+        <td><a href="{% url 'delete_course' course.course_num  %}" class="button">Delete</a></td><br>
+      </tr>
+    {% endfor %}<br>
+    <a href="{% url 'create_course' %}" class="button">Create New Course</a>
+<!--'update_teacher' teacher.last_name "-->

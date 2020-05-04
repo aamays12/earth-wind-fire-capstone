@@ -1,0 +1,9 @@
+
+<p> Are you sure you want to Delete Course "{{course.title}} "?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <a href="{% url 'index' %}">Cancel</a>
+
+  <input type="submit" name="Confirm">
+</form>

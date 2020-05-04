@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Course/instructor forms</title>
+        <meta name="description" content="CAPSTONE DESCRIPTION">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+        
+    </head>
+    <body>
+        <div style="padding-top:5%;">
+            <div class="w-75 mx-auto rounded grayBG" style="padding-top:5%"> 
+                <div class ="w-50 mx-auto rounded  maroonBG">
+                    <p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%">Select a Form</p>
+                </div>
+               <div style="margin-left:25%; margin-top:5%;">
+                    <div class="form-group">
+                         <label for="courseOrInstructor" style="font-weight:bold; width: 100px; display:inline-block;">Which form:</label>
+                            <select id="courseOrInstructor" class="form-control" style="width: 180px; display:inline-block;" name="courseOrInstructor">
+                                <option value="None">---SELECT---</option>
+                                <option value="course">Course</option>
+                                <option value="instructor">Instructor</option>
+                            </select>
+                    </div>
+                    <div id="courseDiv" class="form-wrap">
+                        <form id="courseForm">
+                            <label for="courseNum" style="font-weight:bold; width: 100px; display:inline-block;">Course #:</label>
+                            <input type="text" id="courseNum" name="courseNum" class="form-control" style="width: 180px; display:inline-block;" placeholder="Number of course">
+                            <br>
+                            
+                            <label for="courseTitle" style="font-weight:bold; width: 100px; display:inline-block;">Course title:</label>
+                            <input type="text" id="courseTitle" class="form-control" name="courseTitle" placeholder="Name of course" style="width: 180px; display:inline-block; margin-bottom:25px;">
+                            <br>
+                            
+                            
+                            <label for="meetingDays" style="font-weight:bold; width: 100px; display:inline-block;">Meeting days:</label>
+                            <div>
+                                <input type="radio" id="monday" value="monday" style="display:inline-block; margin-bottom:25px;">
+                                <label for="monday" style="font-weight:bold; width: 100px; display:inline-block;">Monday</label>
+                                <br>
+
+                                <input type="radio" id="tuesday" value="tuesday" style="display:inline-block; margin-bottom:25px;">
+                                <label for="tuesday" style="font-weight:bold; width: 100px; display:inline-block;">Tuesday</label>
+                                <br>
+
+                                <input type="radio" id="wednesday" value="wednesday" style="display:inline-block; margin-bottom:25px;">
+                                <label for="wednesday" style="font-weight:bold; width: 100px; display:inline-block;">Wednesday</label>
+                                <br>
+
+                                <input type="radio" id="thursday" value="thursday" style="display:inline-block; margin-bottom:25px;">
+                                <label for="thursday" style="font-weight:bold; width: 100px; display:inline-block;">Thursday</label>
+                                <br>
+
+                                <input type="radio" id="friday" value="friday" style="display:inline-block; margin-bottom:25px;">
+                                <label for="friday" style="font-weight:bold; width: 100px; display:inline-block;">Friday</label>
+                                <br>
+                            </div>
+                            <br>
+                            
+                             <label for="discipline" style="font-weight:bold; width: 100px; display:inline-block;">Discipline:</label>
+                            <select id="discipline" class="form-control" style="width: 180px; display:inline-block;" name="discipline">
+                                <option value"None">---SELECT---</option>
+                                <option value"compSci">Computer Science</option>
+                                <option value"psychology">Psychology</option>
+                                <option value"accounting">Accounting</option>
+                                <option value"infoAssurance">Information Assurance</option>
+                                <option value"infoSci">Information Science</option>
+                            </select>
+                            <br>
+                        </form>
+                    </div>
+                    <div id="instructorDiv" class="form-wrap">
+                        <form id="instructorForm">
+                            <label for="lname" style="font-weight:bold; width: 100px; display:inline-block;">Last name:</label>
+                            <input type="text" id="lname" name="lname" class="form-control" style="width: 180px; display:inline-block;" placeholder="Instructor last name">
+                            <br>
+                            
+                            <label for="mCourseLoad" style="font-weight:bold; width: 100px; display:inline-block;">Max course load:</label>
+                            <input type="text" id="mClassLoad" class="form-control" name="mClassLoad" placeholder="Max for instructor" style="width: 180px; display:inline-block; margin-bottom:25px;">
+                            <br>
+                            
+                             <label for="discipline" style="font-weight:bold; width: 100px; display:inline-block;">Discipline:</label>
+                            <select id="discipline" class="form-control" style="width: 180px; display:inline-block;" name="discipline">
+                                <option value"None">---SELECT---</option>
+                                <option value"compSci">Computer Science</option>
+                                <option value"psychology">Psychology</option>
+                                <option value"accounting">Accounting</option>
+                                <option value"infoAssurance">Information Assurance</option>
+                                <option value"infoSci">Information Science</option>
+                            </select>
+                            <br>
+                        </form>
+                    </div>
+                
+                    
+                </div>
+                <button onclick="window.location.href = 'register';" type="button" class="btn btn-secondary btn-xl maroonBG" style="margin-bottom:5%; margin-left:5%; margin-top:10%;">Back</button>
+                <button onclick="window.location.href = '';" type="button" class="btn btn-secondary btn-xl maroonBG" style="margin-bottom:5%; margin-left:5%; margin-top:10%;">Submit</button>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{% static 'JS/courseOrInstructor.js' %} "></script>
+    </body>
+</html>

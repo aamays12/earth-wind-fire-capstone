@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Register</title>
+        <meta name="description" content="CAPSTONE DESCRIPTION">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+        
+    </head>
+    <body>
+        <div style="padding-top:5%;">
+            <div class="w-75 mx-auto rounded grayBG" style="padding-top:5%"> 
+                <div class ="w-50 mx-auto rounded  maroonBG">
+                    <p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%">Register</p>
+                </div>
+                <div style="margin-left:25%; margin-top:5%;">
+                    <section class="form-wrap">
+                        <form id="registrationForm">
+                            <label for="roles" style="font-weight:bold; width: 100px; display:inline-block; margin-bottom:25px">Roles:</label>
+                            <select id="roles" class="form-control" style="width:180px; display:inline-block" autofocus> 
+                                <option value="None">---SELECT---</option> 
+                                <option value="Scheduler">Scheduler</option> 
+                                <option value="Admin">Admin</option> 
+                            </select> 
+                            <br>
+                            
+                            <label for="username" style="font-weight:bold; width: 100px; display:inline-block;">Enter Username:</label>
+                            <input type="text" id="username" class="form-control" placeholder="Username" style="width: 180px; margin-bottom: 25px; display:inline-block" required>
+                            <br>
+                            
+                            <label for="emailInputRegister" style="font-weight:bold; width: 100px; display:inline-block;">Enter E-mail:</label>
+                            <input type="email" id="emailInputRegister" class="form-control" placeholder="Email" pattern="+@" title="@*.*" style="width: 180px; display:inline-block" required>
+                            <br>
+                            
+                            <label for="password" style="font-weight:bold; width: 100px; display:inline-block;">Enter Password:</label>
+                            <input type="password" id="password" class="form-control" placeholder="Password" style="width: 180px; display:inline-block" minlength="6" maxlength="12" required>
+                            <br>
+                            
+                            <label for="confirm_password" style="font-weight:bold; width: 100px; display:inline-block;">Re-enter Password:</label>
+                            <input type="password" id="confirm_password" class="form-control" placeholder="Confirm Password" style="width: 180px; display:inline-block" minlength="6" maxlength="12" required>
+                            <br>
+                            
+                            <button onclick="window.location.href = '/adtaa/www';" type="button" class="btn btn-xl maroonBG" style="margin-bottom:5%; margin-left:-10%; margin-top:10%;">Home</button>
+                            <input type="submit" value="Submit" class="btn btn-xl maroonBG" style="margin-bottom:5%; margin-left:5%; margin-top:10%;">
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <script src="{% static 'JS/confirmPassword.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>   
+    </body>
+</html>
