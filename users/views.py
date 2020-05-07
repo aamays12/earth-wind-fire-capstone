@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from .forms import UserRegisterForm
@@ -11,12 +12,15 @@ def register(request):
 		form = UserRegisterForm(request.POST)
 		if form.is_valid():
 			username = form.cleaned_data.get('username')
+			email = form.cleaned_data.get('email')
 			group = form.cleaned_data.get('groups')
 			user = form.save()
 			user.is_active = False
 			user.save()
 			user.groups.add(group)
-			messages.success(request, f'Account request sent for {username}! Please contact your root_user.')
+			messages.success(request, f'Account request sent for {username}! Please contact your root_user and check your email for more information.')
+			send_mail('Confirmation email', 'An e-mail has been sent to your Root User. This email will let them know that you have registered. You will receive an e-mail shortly to let you know when your account has been activated.', 'aaronmays423@gmail.com', [email], fail_silently=False)
+			send_mail('A user has registered.', str(username)+' has recently registered under their e-mail, '+str(email)+', and is waiting for activation', 'aaronmays423@gmail.com', ['aamays@ualr.edu', 'jpdeer@ualr.edu'], fail_silently=False)
 			return redirect('login')
 	else:
 		form = UserRegisterForm()

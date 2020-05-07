@@ -2,82 +2,91 @@
 
 <!doctype html>
 <html>
-<head>
-  <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
-</head>
-
-<body>
-    <div style="padding-top:5%;">
-        <div class="w-75 mx-auto rounded grayBG"> 
-            <div class="navbar-nav maroonBG">
-            {% if user.is_authenticated %}
-                <span class="nav-item nav-link">Hello, {{request.user.username}}</span>
-                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-            {% endif %}
-            </div>
-            <div class="center">
-                <table class="rounded maroonBG" border="5">
-                <tr align="center">
-                  <th colspan="7">
-                    <h3>Teacher List</h3>
-                  </th>
-                </tr>
-                <tr>
-                  <th>Last Name</th>
-                  <th>First Name</th>
-                  <th>Email</th>
-                  <th>Class Load</th>
-                  <th>Discipline Areas</th>
-                  <th colspan="2">Actions</th>
-                </tr>
-                {% for teacher in teacher_list %}
-                  <tr align="center">
-                    <td>{{teacher.last_name}}</td>
-                    <td>{{teacher.first_name}}</td>
-                    <td>{{teacher.email}}</td>
-                    <td>{{teacher.class_load}}</td>
-                    <td>{{teacher.get_area_values}}</td>
-                    <td><a href="{% url 'update_teacher' teacher.last_name  %}" class="button">Update</a></td>
-                    <td><a href="{% url 'delete_teacher' teacher.last_name  %}" class="button">Delete</a></td>
-                  </tr>
-                {% endfor %}
-                </table>
-                <a href="{% url 'create_teacher' %}" class="button">Create Teacher</a><br>
-            </div>
-            
-            <div class="center">
-                <table class="rounded maroonBG" border="5S">
-                  <tr align="center">
-                    <th colspan="7">
-                      <h3><br>Course List</h3>
-                    </th>
-                  </tr>
-                  <tr>
-                    <tr>
-                      <th>Course #</th>
-                      <th>Title</th>
-                      <th>Meet Day</th>
-                      <th>Time</th>
-                      <th>Discipline Areas</th>
-                      <th colspan="2">Actions</th>
-                    </tr>
-                  {% for course in course_list %}
-                    <tr align="center">
-                      <td>{{course.course_num}}</td>
-                      <td>{{course.title}}</td>
-                      <td>{{course.meeting_day}}</td>
-                      <td>{{course.meeting_time}}</td>
-                      <td>{{course.get_area_values}}</td>
-                      <td><a href="{% url 'update_course' course.course_num  %}" class="button">Update</a></td>
-                      <td><a href="{% url 'delete_course' course.course_num  %}" class="button">Delete</a></td>
-                    </tr>
-                  {% endfor %}<br>
-                </table>
-                <a href="{% url 'create_course' %}" class="button">Create Course</a><br>
-				<a href="/assistant/" class="button">Go to Assistant</a><br>
-                <!--'update_teacher' teacher.last_name "-->
-            </div>
-        </div>
-    </div>
-</body>
+	<head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Academic Department Teaching Assignments Assistant</title>
+        <meta name="description" content="An assistant tool that allows schedulers and administrators to develop a schedule to assign teachers to courses.">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+	</head>
+	<body>
+		<div class="navbar-nav maroonBG">
+			<div>
+			{% if user.is_authenticated %}
+				<span class="nav-item nav-link">Hello, {{request.user.username}}</span>
+				<a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+			{% endif %}
+			</div>
+		</div>
+		<div class="w-75 mx-auto rounded grayBG" style="padding:2.5%;"> 
+			<div class ="w-50 mx-auto rounded  maroonBG">
+				<p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%; margin-bottom:15%;">Edit Courses and Teachers</p>
+			</div>
+			<div class="center">
+				<table class="center table" style="text-align: center; background-color: #606060; color: #FFF;" border="5">
+					<tr align="center">
+						<th colspan="7">
+							<h3>Teacher List</h3>
+						</th>
+					</tr>
+					<tr>
+						<th>Last Name</th>
+						<th>First Name</th>
+						<th>Email</th>
+						<th>Class Load</th>
+						<th>Discipline Areas</th>
+						<th colspan="2">Actions</th>
+					</tr>
+					{% for teacher in teacher_list %}
+						<tr align="center">
+							<td>{{teacher.last_name}}</td>
+							<td>{{teacher.first_name}}</td>
+							<td>{{teacher.email}}</td>
+							<td>{{teacher.class_load}}</td>
+							<td>{{teacher.get_area_values}}</td>
+							<td><a href="{% url 'update_teacher' teacher.last_name  %}" class="button">Update</a></td>
+							<td><a href="{% url 'delete_teacher' teacher.last_name  %}" class="button">Delete</a></td>
+						</tr>
+					{% endfor %}
+				</table>
+				<button onclick="window.location.href = '{% url 'create_teacher' %}';" type="button" class="btn maroonBG">Create Teacher</button><br>
+			</div>
+			<div class="center">
+				<table class="center table" style="text-align: center; background-color: #606060; color: #FFF;" border="5S">
+					  <tr align="center">
+							<th colspan="7">
+								<h3><br>Course List</h3>
+							</th>
+					  </tr>
+					  <tr>
+							<tr>
+								<th>Course #</th>
+								<th>Title</th>
+								<th>Meet Day</th>
+								<th>Time</th>
+								<th>Discipline Areas</th>
+								<th colspan="2">Actions</th>
+							</tr>
+							{% for course in course_list %}
+								<tr align="center">
+									<td>{{course.course_num}}</td>
+									<td>{{course.title}}</td>
+									<td>{{course.meeting_day}}</td>
+									<td>{{course.meeting_time}}</td>
+									<td>{{course.get_area_values}}</td>
+									<td><a href="{% url 'update_course' course.course_num  %}" class="button">Update</a></td>
+									<td><a href="{% url 'delete_course' course.course_num  %}" class="button">Delete</a></td>
+								</tr>
+							{% endfor %}<br>
+				</table>
+				<button onclick="window.location.href = '{% url 'create_course' %}';" type="button" class="btn maroonBG">Create Course</button>
+				<button onclick="window.location.href = '{% url 'scheduler' %}';" type="button" class="btn maroonBG" style="margin-left:5%;">Go to Assistant</button>
+				{% if request.user.is_staff %}
+						<button onclick="window.location.href = '/admin/';" type="button" class="btn maroonBG" style="margin-left:5%;">Go to Admin</button>
+				{% endif %}
+					<!--'update_teacher' teacher.last_name "-->
+				</div>
+			</div>
+	</body>
 </html>

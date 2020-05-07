@@ -6,26 +6,26 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Login</title>
-        <meta name="description" content="CAPSTONE DESCRIPTION">
+        <meta name="description" content="An assistant tool that allows schedulers and administrators to develop a schedule to assign teachers to courses.">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
         
     </head>
     <body>
         <div style="padding-top:5%;">
-            <div class="w-75 mx-auto rounded grayBG" style="padding-top:5%"> 
-                <div class ="w-50 mx-auto rounded  maroonBG">
+            <div class="w-75 mx-auto rounded grayBG" style="padding-top:2.5%"> 
+                <div class ="w-50 mx-auto rounded  maroonBG" style="margin-bottom:2.5%">
                     <p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%">Login</p>
                 </div>
                 <section class="form-wrap" style="margin-left: 7.5%">
                         <form method="POST" id="registrationForm">
 							{% csrf_token %}
-							<fieldset class="form-group" style="margin-left: 19%; margin-top: 2%;">
+							<fieldset class="form-group" style="margin-left: 19%; margin-top: 7%;">
 									{{ form.as_p }}									
 							</fieldset>
 							<div class="form-group">
 								<button onclick="window.location.href = '/';" type="button" class="btn btn-xl maroonBG" style="margin-top:5%;">Home</button>
-								<button class="btn btn-xl maroonBG" style="margin-left:5%; margin-top:5%;" type="submit"> Sign In</button>
+								<button class="btn btn-xl maroonBG" style="margin-left:5%; margin-top:5%;" type="submit">Sign In</button>
 							</div>
                         </form>
 						<div class="border-top">

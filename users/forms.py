@@ -9,7 +9,13 @@ class UserRegisterForm(UserCreationForm):
 
 	username = forms.CharField(
 		label = ("Username"),
-		help_text=("Letters, digits and @/./+/-/_ only"),
+		help_text=(""),
+	)
+	
+	password1 = forms.CharField(
+		label = ("Password"),
+		help_text=(""),
+		widget=forms.PasswordInput,
 	)
 	password2 = forms.CharField(
         label=("Re-enter Password"),

@@ -1,6 +1,36 @@
+{% load static %}
 
-<form action="" method="post">
-  {% csrf_token %}
-  {{form}}
-  <input type="submit">
-</form>
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Academic Department Teaching Assignments Assistant</title>
+        <meta name="description" content="An assistant tool that allows schedulers and administrators to develop a schedule to assign teachers to courses.">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+	</head>
+	<body>
+		<div class="navbar-nav maroonBG">
+			<div>
+			{% if user.is_authenticated %}
+				<span class="nav-item nav-link">Hello, {{request.user.username}}</span>
+				<a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+			{% endif %}
+			</div>
+		</div>
+		<div class="w-75 mx-auto rounded grayBG" style="padding:2.5%;"> 
+			<div class ="w-50 mx-auto rounded  maroonBG">
+				<p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%; margin-bottom:5%;">Create/Update Teacher</p>
+			</div>
+			<div class="w-50 mx-auto">
+				<form action="" method="post">
+					{% csrf_token %}
+					{{form.as_p}}
+					<button onclick="window.location.href = '{% url 'index' %}';" type="button" class="btn btn-xl maroonBG" style="margin-left:7.5%; margin-top:10%;">Cancel</button>
+					<input class="btn btn-xl maroonBG" style="margin-left:5%; margin-top:10%;"type="submit">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

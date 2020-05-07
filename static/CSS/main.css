@@ -5,6 +5,11 @@ body {
     background: #800000;
     color: #FFF;
 }
+.tableGrayBG {
+	background-color: #505050;
+	color: #FFF;
+}
+
 .grayBG {
     background: #808080;
     color: #FFF;

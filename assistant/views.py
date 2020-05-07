@@ -26,6 +26,3 @@ def createSchedule(request):
 		return render(request, 'assistant/create_schedule.html')
 	else:
 		return redirect("/")
-
-def helloWorld(request):
-	return render(request, 'assistant/test.html')
