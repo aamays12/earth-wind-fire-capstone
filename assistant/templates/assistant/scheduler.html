@@ -39,34 +39,37 @@
 				<div class ="w-50 mx-auto rounded  maroonBG">
                     <p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%">Teacher Assignment Assistant</p>
                 </div>
-				<table class="center table" style="background-color: #606060; color: #FFF;" border="5">
-					<tr align="center">
-						<th colspan="6">
-							<h3>Schedule List</h3>
-						</th>
-					</tr>
-					<tr>
-						<th>Last Name</th>
-						<th>First Name</th>
-						<th>Course #</th>
-						<th>Course Title</th>
-						<th>Meeting Day</th>
-						<th>Meeting Time</th>
-					</tr>
-					{% for schedule in schedule_list %}
-					<tr>
-						<td>{{schedule.last_name}}</td>
-						<td>{{schedule.first_name}}</td>
-						<td>{{schedule.course_num}}</td>
-						<td>{{schedule.title}}</td>
-						<td>{{schedule.meeting_day}}</td>
-						<td>{{schedule.meeting_time}}</td>
-					</tr>
-					{% endfor %}
-				</table>
+				<div id="printScheduleTable">
+					<table class="center table" style="background-color: #606060; color: #FFF;" border="5">
+						<tr align="center">
+							<th colspan="6">
+								<h3>Schedule List</h3>
+							</th>
+						</tr>
+						<tr>
+							<th>Last Name</th>
+							<th>First Name</th>
+							<th>Course #</th>
+							<th>Course Title</th>
+							<th>Meeting Day</th>
+							<th>Meeting Time</th>
+						</tr>
+						{% for schedule in schedule_list %}
+						<tr>
+							<td>{{schedule.last_name}}</td>
+							<td>{{schedule.first_name}}</td>
+							<td>{{schedule.course_num}}</td>
+							<td>{{schedule.title}}</td>
+							<td>{{schedule.meeting_day}}</td>
+							<td>{{schedule.meeting_time}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
 				<button onclick="window.location.href = '{% url 'create_schedule' %}';" type="button" class="btn maroonBG">Create Schedule</button>
+				<button onclick="printData()" type="button" class="btn maroonBG">Print Schedule</button>
 			</div>
 		</div>	
-		
+		<script src="{% static 'JS/printData.js' %}"></script>
 	</body>
 </html>

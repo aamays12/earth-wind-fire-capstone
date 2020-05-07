@@ -13,7 +13,6 @@ class Command(BaseCommand):
         a_count = Area.objects.count()
 
         const_teach_list = teach_list
-        no_teach_list = Schedule()
         load_list = []
 
 
@@ -22,6 +21,7 @@ class Command(BaseCommand):
             load_list.append(teach_list[i].class_load)
 
         for p in range(c_count):
+            schedule_list = Schedule.objects.all()
             #---------------------------------------------------------------------------
             load = 0
             loc = 0
@@ -88,13 +88,14 @@ class Command(BaseCommand):
 
             for i in range(len(schedule_list)):
                 if (schedule_list[i].meeting_day==assign_course.meeting_day)and(schedule_list[i].meeting_time==assign_course.meeting_time):
-                    conflict_list = schedule_list[i]
+                    conflict_list.append(schedule_list[i])
 
             if (conflict_list and const_teach_list):
                 for i in range(len(conflict_list)):
                     temp_teach_count = teach_list.filter(areas=area_priority).exclude(last_name=conflict_list[i].last_name)
             else:
                 temp_teach_count = teach_list.filter(areas=area_priority)
+
 
             no_teacher = True
             while(not assign_teacher):
