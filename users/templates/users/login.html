@@ -20,17 +20,17 @@
                 <section class="form-wrap" style="margin-left: 7.5%">
                         <form method="POST" id="registrationForm">
 							{% csrf_token %}
-							<fieldset class="form-group">
+							<fieldset class="form-group" style="margin-left: 19%; margin-top: 2%;">
 									{{ form.as_p }}									
 							</fieldset>
 							<div class="form-group">
-								<button onclick="window.location.href = '/';" type="button" class="btn btn-xl maroonBG" style="margin-top:10%;">Home</button>
-								<button class="btn btn-xl maroonBG" style="margin-left:5%; margin-top:10%;" type="submit"> Sign In</button>
+								<button onclick="window.location.href = '/';" type="button" class="btn btn-xl maroonBG" style="margin-top:5%;">Home</button>
+								<button class="btn btn-xl maroonBG" style="margin-left:5%; margin-top:5%;" type="submit"> Sign In</button>
 							</div>
                         </form>
 						<div class="border-top">
 							<small>
-								Need an account?? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+								Need an account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
 							</small>
 						</div>
                     </section>

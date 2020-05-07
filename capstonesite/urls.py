@@ -22,7 +22,7 @@ from home import views as home_views
 from assistant import views as assistant_views
 
 urlpatterns = [
-	path('assistant/', assistant_views.assistant, name='assistant'),
+	path('assistant/', include('assistant.urls')),
     path('', home_views.home, name='home'),
 	path('adtaa/', include('adtaa.urls')),
 	path('register/', user_views.register, name='register'),

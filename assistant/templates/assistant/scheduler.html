@@ -1,0 +1,32 @@
+{% load static %}
+
+<!doctype html>
+<html>
+
+	<table border="5">
+		<tr align="center">
+			<th colspan="6">
+				<h3>Schedule List</h3>
+			</th>
+		</tr>
+		<tr>
+			<th>Last Name</th>
+			<th>First Name</th>
+			<th>Course #</th>
+			<th>Course Title</th>
+			<th>Meeting Day</th>
+			<th>Meeting Time</th>
+		</tr>
+		{% for schedule in schedule_list %}
+		<tr align="center">
+			<td>{{schedule.last_name}}</td>
+			<td>{{schedule.first_name}}</td>
+			<td>{{schedule.course_num}}</td>
+			<td>{{schedule.title}}</td>
+			<td>{{schedule.meeting_day}}</td>
+			<td>{{schedule.meeting_time}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<a href="{% url 'create_schedule' %}" class="button">Create Schedule</a>
+</html>

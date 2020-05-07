@@ -32,5 +32,4 @@ def login_success(request):
 		return redirect("/adtaa/")
 	elif request.user.groups.filter(name="Scheduler").exists():
 		# user is a scheduler
-		return redirect("assistant")
-	
+		return redirect("/assistant/")

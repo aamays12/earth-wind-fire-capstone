@@ -103,7 +103,6 @@ def deleteCourse(request, pk):
         return render(request, 'adtaa/delete_course.html', context)
     else:
         return redirect("/")
-    
 
 
 

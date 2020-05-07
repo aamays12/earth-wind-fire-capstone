@@ -1,0 +1,10 @@
+
+<p> Generate New Auto-Solution</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <a href="{% url 'scheduler' %}">Cancel</a>
+
+  <input type="submit" name="Confirm">
+  <a>WARNING: This will delete the current Schedule</a>
+</form>
