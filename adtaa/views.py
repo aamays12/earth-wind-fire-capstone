@@ -6,8 +6,8 @@ from .forms import TeacherForm, CourseForm
 from .models import Teacher, Course
 
 def index(request):
-    teacher_list = Teacher.objects.order_by('-last_name')
-    course_list = Course.objects.order_by('-course_num')
+    teacher_list = Teacher.objects.order_by('last_name')
+    course_list = Course.objects.order_by('course_num')
 
     context = {
         'teacher_list' : teacher_list,

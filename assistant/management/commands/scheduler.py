@@ -90,7 +90,7 @@ class Command(BaseCommand):
                 if (schedule_list[i].meeting_day==assign_course.meeting_day)and(schedule_list[i].meeting_time==assign_course.meeting_time):
                     conflict_list = schedule_list[i]
 
-            if (conflict_list):
+            if (conflict_list and const_teach_list):
                 for i in range(len(conflict_list)):
                     temp_teach_count = teach_list.filter(areas=area_priority).exclude(last_name=conflict_list[i].last_name)
             else:
