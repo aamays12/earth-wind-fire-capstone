@@ -42,7 +42,7 @@
 				<div id="printScheduleTable">
 					<table class="center table" style="background-color: #606060; color: #FFF;" border="5">
 						<tr align="center">
-							<th colspan="6">
+							<th colspan="8">
 								<h3>Schedule List</h3>
 							</th>
 						</tr>
@@ -53,6 +53,7 @@
 							<th>Course Title</th>
 							<th>Meeting Day</th>
 							<th>Meeting Time</th>
+							<th colspan="2">Actions</th>
 						</tr>
 						{% for schedule in schedule_list %}
 						<tr>
@@ -62,11 +63,14 @@
 							<td>{{schedule.title}}</td>
 							<td>{{schedule.meeting_day}}</td>
 							<td>{{schedule.meeting_time}}</td>
+							<td><a href="{% url 'update_assignment' schedule.id %}" class="button">Update</a></td>
+							<td><a href="{% url 'delete_assignment' schedule.id %}" class="button">Delete</a></td>
 						</tr>
 						{% endfor %}
 					</table>
 				</div>
-				<button onclick="window.location.href = '{% url 'create_schedule' %}';" type="button" class="btn maroonBG">Create Schedule</button>
+				<button onclick="window.location.href = '{% url 'create_assignment' %}';" type="button" class="btn maroonBG">Create Assignment</button>
+				<button onclick="window.location.href = '{% url 'create_schedule' %}';" type="button" class="btn maroonBG">Reset Schedule</button>
 				<button onclick="printData()" type="button" class="btn maroonBG">Print Schedule</button>
 			</div>
 		</div>	

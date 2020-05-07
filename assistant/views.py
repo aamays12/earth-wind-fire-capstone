@@ -26,3 +26,44 @@ def createSchedule(request):
 		return render(request, 'assistant/create_schedule.html')
 	else:
 		return redirect("/")
+
+def createAssignment(request):
+	form = ScheduleForm()
+	if request.method == 'POST':
+		form = ScheduleForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('scheduler')
+	context = {'form':form,}
+	if request.user.groups.filter(name="Admin").exists() or request.user.groups.filter(name="Scheduler").exists() or request.user.is_staff:
+		return render(request, 'assistant/schedule_form.html', context)
+	else:
+		return redirect("/")
+
+def updateAssignment(request, pk):
+	schedule = Schedule.objects.get(id=pk)
+	form = ScheduleForm(instance=schedule)
+
+	if request.method == 'POST':
+		form = ScheduleForm(request.POST, instance=schedule)
+		if form.is_valid():
+			form.save()
+			return redirect('scheduler')
+
+	context = {'form':form}
+	if request.user.groups.filter(name="Admin").exists() or request.user.groups.filter(name="Scheduler").exists() or request.user.is_staff:
+		return render(request, 'assistant/schedule_form.html', context)
+	else:
+		return redirect("/")
+
+def deleteAssignment(request, pk):
+	schedule = Schedule.objects.get(id=pk)
+	if request.method == 'POST':
+		schedule.delete()
+		return redirect('scheduler')
+
+	context = {'schedule':schedule}
+	if request.user.groups.filter(name="Admin").exists() or request.user.groups.filter(name="Scheduler").exists() or request.user.is_staff:
+		return render(request, 'assistant/delete_schedule.html', context)
+	else:
+		return redirect("/")

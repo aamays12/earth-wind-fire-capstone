@@ -37,11 +37,16 @@
 		{% endif %}
 		<div class="w-75 mx-auto rounded grayBG" style="padding:2.5%;"> 
 			<div class ="w-50 mx-auto rounded  maroonBG">
-				<p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%; margin-bottom:5%;">Generate New Auto-Solution</p>
+				<p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%; margin-bottom:5%;">Create/Update Assignment</p>
 			</div>
-			<strong style="margin-left:25%;">WARNING: This will delete the current Schedule</strong>
+			
 			<form action="" method="POST">
-				{% csrf_token %}
+				<div style="margin-left:25%;">
+                    <section class="form-wrap">
+						{% csrf_token %}
+						{{form.as_p}}
+					</section>
+				</div>
 				<button onclick="window.location.href = '{% url 'scheduler' %}';" type="button" class="btn btn-xl maroonBG" style="margin-left:7.5%; margin-top:2.5%;">Cancel</button>
 				<input class="btn btn-xl maroonBG" style="margin-left:5%; margin-top:2.5%;"type="submit" name="Confirm">
 			</form>
