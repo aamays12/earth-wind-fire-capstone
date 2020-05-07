@@ -18,9 +18,10 @@
                     <p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%">Login</p>
                 </div>
                 <section class="form-wrap" style="margin-left: 7.5%">
+						<p style="margin-left: 19%;"> If you are unsure if your account has been activated, please contact your root user</p>
                         <form method="POST" id="registrationForm">
 							{% csrf_token %}
-							<fieldset class="form-group" style="margin-left: 19%; margin-top: 7%;">
+							<fieldset class="form-group" style="margin-left: 19%; margin-top: 2%;">
 									{{ form.as_p }}									
 							</fieldset>
 							<div class="form-group">
@@ -30,7 +31,7 @@
                         </form>
 						<div class="border-top">
 							<small>
-								Need an account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+								Need an account? <a class="ml-2" href="{% url 'register' %}">Click here</a>
 							</small>
 						</div>
                     </section>

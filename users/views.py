@@ -18,7 +18,7 @@ def register(request):
 			user.is_active = False
 			user.save()
 			user.groups.add(group)
-			messages.success(request, f'Account request sent for {username}! Please contact your root_user and check your email for more information.')
+			messages.success(request, f'{username} has sent a request to register. If this is a legitimate user, please activate their account.')
 			send_mail('Confirmation email', 'An e-mail has been sent to your Root User. This email will let them know that you have registered. You will receive an e-mail shortly to let you know when your account has been activated.', 'aaronmays423@gmail.com', [email], fail_silently=False)
 			send_mail('A user has registered.', str(username)+' has recently registered under their e-mail, '+str(email)+', and is waiting for activation', 'aaronmays423@gmail.com', ['aamays@ualr.edu', 'jpdeer@ualr.edu'], fail_silently=False)
 			return redirect('login')

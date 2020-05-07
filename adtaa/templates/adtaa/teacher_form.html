@@ -11,14 +11,30 @@
         <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
 	</head>
 	<body>
-		<div class="navbar-nav maroonBG">
-			<div>
-			{% if user.is_authenticated %}
-				<span class="nav-item nav-link">Hello, {{request.user.username}}</span>
-				<a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-			{% endif %}
-			</div>
-		</div>
+		{% if user.is_authenticated %}
+			<nav class="navbar navbar-expand-md navMaroonBG navAlign">
+				<span class="nav-link">Hello, {{request.user.username}}</span>
+				<ul class="navbar-nav mr-auto">
+					{% if request.user.is_staff %}
+						<li class="nav-item">
+							<a class="nav-link" href = "{% url 'scheduler' %}";>Scheduler</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href = '/admin/'>Admin</a>
+						</li>
+					{% elif request.user.group.name == 'Admin' %}
+						<li class="nav-item">
+							<a class="nav-link" href = "{% url 'scheduler' %}";>Scheduler</a>
+						</li>
+					{% endif %}
+				</ul>
+				<ul class="nav navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+					</li>
+				</ul>
+			</nav>
+		{% endif %}
 		<div class="w-75 mx-auto rounded grayBG" style="padding:2.5%;"> 
 			<div class ="w-50 mx-auto rounded  maroonBG">
 				<p id="text-large" class="text-center" style="padding-top:10%; padding-bottom: 10%; margin-bottom:5%;">Create/Update Teacher</p>
